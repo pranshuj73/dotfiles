@@ -21,7 +21,6 @@ local keys = {
 
   -- panes: zoom+close pane
   { key = 'Enter', mods = mod.SUPER,     action = act.TogglePaneZoomState },
-  { key = 'W',     mods = mod.SUPER,     action = act.CloseCurrentPane({ confirm = true }) },
   { key = 'w',     mods = mod.SUPER_REV, action = act.CloseCurrentPane({ confirm = false }) },
 
   -- pane: activate pane
