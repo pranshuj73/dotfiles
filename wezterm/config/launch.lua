@@ -5,7 +5,7 @@ local options = {
 }
 
 if platform.is_win then
-   options.default_prog = { 'pwsh' }
+   options.default_prog = { 'arch.exe' }
 elseif platform.is_mac then
    options.default_prog = { 'fish' }
 elseif platform.is_linux then
