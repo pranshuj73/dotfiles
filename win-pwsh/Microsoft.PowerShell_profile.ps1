@@ -1,13 +1,27 @@
 ### DUPLICATE TAB WITH SAME CWD
 function prompt {
-  $loc = $executionContext.SessionState.Path.CurrentLocation;
+    $loc = $executionContext.SessionState.Path.CurrentLocation
+    $out = ""
+    $osc7 = ""
 
-$out = ""
-  if ($loc.Provider.Name -eq "FileSystem") {
-    $out += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
-  }
-  $out += "PS $loc$('>' * ($nestedPromptLevel + 1)) ";
-  return $out
+    if ($loc.Provider.Name -eq "FileSystem") {
+        # Define ANSI escape character
+        $ansi_escape = [char]27
+
+        # Normalize the path with forward slashes
+        $provider_path = $loc.ProviderPath -Replace "\\", "/"
+        
+        # OSC 7 sequence (sets terminal's working directory)
+        $osc7 = "$ansi_escape]7;file://${env:COMPUTERNAME}/${provider_path}$ansi_escape\"
+        
+        # OSC 9;9 sequence (provides information about the provider path)
+        $out += "$ansi_escape]9;9;`"$($loc.ProviderPath)`"$ansi_escape\"
+    }
+
+    # Append OSC 7 and construct the prompt
+    $out += $osc7
+    $out += "PS $loc$('>' * ($nestedPromptLevel + 1)) "
+    return $out
 }
 
 ### CUSTOM GIT SHORTCUTS

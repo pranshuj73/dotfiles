@@ -16,8 +16,8 @@ end
 local keys = {
   -- panes --
   -- panes: split panes
-  { key = [[\]], mods = mod.SUPER,     action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }) },
-  { key = [[\]], mods = mod.SUPER_REV, action = act.SplitVertical({ domain = 'CurrentPaneDomain' }) },
+  { key = [[\]], mods = mod.SUPER,     action = act.SplitHorizontal{ domain = 'CurrentPaneDomain' } },
+  { key = [[\]], mods = mod.SUPER_REV, action = act.SplitVertical{ domain = 'CurrentPaneDomain' } },
 
   -- panes: zoom+close pane
   { key = 'Enter', mods = mod.SUPER,     action = act.TogglePaneZoomState },
@@ -34,10 +34,13 @@ local keys = {
   { key = 'RightArrow', mods = mod.SUPER_REV .. "|SHIFT", action = act.AdjustPaneSize { 'Right', 5 } },
   { key = 'UpArrow',    mods = mod.SUPER_REV .. "|SHIFT", action = act.AdjustPaneSize { 'Up',    5 } },
   { key = 'DownArrow',  mods = mod.SUPER_REV .. "|SHIFT", action = act.AdjustPaneSize { 'Down',  5 } },
+
+  -- launch menu
+  { key = 'l', mods = mod.SUPER_REV, action = wezterm.action.ShowLauncherArgs { flags = 'LAUNCH_MENU_ITEMS' } },
 }
 
 
 return {
-  leader = { key = 'Space', mods = mod.SUPER_REV, timeout_milliseconds = 1000 },
+  leader = { key = 'Space', mods = mod.SUPER_REV, timeout_milliseconds = 500 },
   keys = keys,
 }

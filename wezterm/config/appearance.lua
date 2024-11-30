@@ -1,9 +1,9 @@
-local theme = require('colors/kanagawa')
+-- local theme = require('colors/kanagawa')
 
 return {
   -- colors
-  colors = theme.colors,
-  force_reverse_video_cursor = theme.force_reverse_video_cursor,
+  -- colors = theme,
+  color_scheme = 'Grayscale (dark) (terminal.sexy)',
 
   -- window paddings set to 0 for neovim
   window_padding = {

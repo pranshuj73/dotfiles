@@ -1,0 +1,33 @@
+[colors]
+# Normal (ANSI) colors
+ansi = [
+    "#080808", # black (gray0)
+    "#D70000", # red
+    "#789978", # green
+    "#ffAA88", # yellow
+    "#7788AA", # blue
+    "#D7007D", # magenta
+    "#708090", # cyan (lack)
+    "#DEEEED", # white (luster)
+]
+
+# Bright (ANSI) colors (same as normal if not specified)
+brights = [
+    "#080808", # bright black
+    "#D70000", # bright red
+    "#789978", # bright green
+    "#ffAA88", # bright yellow
+    "#7788AA", # bright blue
+    "#D7007D", # bright magenta
+    "#708090", # bright cyan
+    "#DEEEED", # bright white
+]
+
+# Foreground, background, and cursor colors
+foreground = "#DEEEED" # same as white
+background = "#0A0A0A" # primary background
+
+[metadata]
+name = "Lackluster"
+author = "slugbyte"
+origin_url = "https://github.com/slugbyte/lackluster.nvim"
