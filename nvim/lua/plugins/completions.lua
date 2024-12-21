@@ -8,6 +8,33 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets"
     },
+    config = function ()
+      local ls = require("luasnip")
+      local s = ls.snippet
+      local t = ls.text_node
+      local i = ls.insert_node
+
+      local custom_snippets = {
+        s("func", {
+          t("export default function "), i(1, "Page"), t("() {"),
+          t({"", "  return ("}),
+          t({"", "    "}), i(2, "{/* return */}"),
+          t({"", "  );"}),
+          t({"", "}"}),
+        }),
+        s("cls", {
+          t('className="'), i(1), t('"'),
+        }),
+      }
+
+      ls.add_snippets(nil, {
+        javascript = custom_snippets,
+        typescript = custom_snippets,
+        javascriptreact = custom_snippets,
+        typescriptreact = custom_snippets,
+      })
+      require'luasnip/loaders/from_vscode'.lazy_load()
+    end
 
   },
   {
