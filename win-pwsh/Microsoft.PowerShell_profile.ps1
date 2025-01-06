@@ -10,10 +10,10 @@ function prompt {
 
         # Normalize the path with forward slashes
         $provider_path = $loc.ProviderPath -Replace "\\", "/"
-        
+
         # OSC 7 sequence (sets terminal's working directory)
         $osc7 = "$ansi_escape]7;file://${env:COMPUTERNAME}/${provider_path}$ansi_escape\"
-        
+
         # OSC 9;9 sequence (provides information about the provider path)
         $out += "$ansi_escape]9;9;`"$($loc.ProviderPath)`"$ansi_escape\"
     }
@@ -21,6 +21,7 @@ function prompt {
     # Append OSC 7 and construct the prompt
     $out += $osc7
     $out += "PS $loc$('>' * ($nestedPromptLevel + 1)) "
+
     return $out
 }
 
@@ -69,4 +70,5 @@ Set-PSReadLineKeyHandler -Chord Tab -Function AcceptSuggestion
 Set-PSReadLineKeyHandler -Chord RightArrow -Function AcceptNextSuggestionWord
 
 ### OH MY POSH SETUP ###
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/pararussel.omp.json" | Invoke-Expression
+pokeget random --hide-name
+oh-my-posh --init --shell pwsh --config "~/desktop/github/dotfiles/win-pwsh/gray.json" | Invoke-Expression

@@ -22,6 +22,8 @@ return {
   use_fancy_tab_bar = false,
   switch_to_last_active_tab_when_closing_tab = true,
 
+  -- FPS
+  max_fps = 120,
 
   adjust_window_size_when_changing_font_size = false,
 }

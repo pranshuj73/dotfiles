@@ -8,7 +8,10 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
     end,
     opts = {
-      default = { file_ignore_patterns = { "node_modules" } }
+      default = { file_ignore_patterns = {
+        "node_modules",
+        "package-lock.json",
+      } }
     }
   },
   {
