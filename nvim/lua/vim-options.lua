@@ -37,3 +37,21 @@ vim.diagnostic.config({
     },
 })
 vim.keymap.set('n', '<leader>dn', ':lua vim.diagnostic.open_float()<CR>', { noremap = true })
+
+-- Toggle Markdown
+vim.keymap.set('n', '<leader>md', ':RenderMarkdown toggle<CR>', { noremap = true })
+
+-- Toggle LSP Virtual Text
+local virtual_text_enabled = true
+
+local function toggle_virtual_text()
+    virtual_text_enabled = not virtual_text_enabled
+    vim.diagnostic.config({ virtual_text = virtual_text_enabled })
+end
+
+vim.keymap.set('n', '<leader>lsp', toggle_virtual_text, { noremap = true })
+
+-- Fold settings
+vim.cmd("set foldmethod=indent")
+vim.cmd("set foldlevel=99")
+

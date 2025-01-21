@@ -25,6 +25,10 @@ function prompt {
     return $out
 }
 
+function rpth {
+  cd ~/Desktop
+}
+
 ### CUSTOM GIT SHORTCUTS
 function gac {
     param (
@@ -69,6 +73,10 @@ function gpl {
 Set-PSReadLineKeyHandler -Chord Tab -Function AcceptSuggestion
 Set-PSReadLineKeyHandler -Chord RightArrow -Function AcceptNextSuggestionWord
 
+### INSHELLISENSE ###
+#if ( Test-Path '~/.inshellisense/powershell/init.ps1' -PathType Leaf ) { . ~/.inshellisense/powershell/init.ps1 } 
+
 ### OH MY POSH SETUP ###
 pokeget random --hide-name
 oh-my-posh --init --shell pwsh --config "~/desktop/github/dotfiles/win-pwsh/gray.json" | Invoke-Expression
+
