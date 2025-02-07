@@ -28,14 +28,14 @@
         - `GOOS=windows go build -o /mnt/c/Users/<myuser>/go/bin/npiperelay.exe github.com/jstarks/npiperelay`
     - edit `~/.zshrc` & add the following alias
         - ```bash
-nvim() {
-    if ! pgrep socat &>/dev/null; then
-        socat UNIX-LISTEN:/tmp/discord-ipc-0,fork \
-          EXEC:"npiperelay.exe //./pipe/discord-ipc-0" &
-    fi
-    command nvim "$@"
-}
-```
+            nvim() {
+                if ! pgrep socat &>/dev/null; then
+                    socat UNIX-LISTEN:/tmp/discord-ipc-0,fork \
+                      EXEC:"npiperelay.exe //./pipe/discord-ipc-0" &
+                fi
+                command nvim "$@"
+            }
+            ```
 
 `wakatime.nvim`
 - `sudo pacman -S wakatime` to install wakatime & `:WakaTimeApiKey` to enter API key

@@ -5,7 +5,12 @@ return {
   event = 'VimEnter',
   opts = function()
     -- get logo from zoro variable in logos/logo.lua
-    local logo = require("logos/logo").jollyroger
+    local logo = require("utils/header").zoro
+    -- if time is between 10am and 6pm, use the jollyroger logo
+    local hour = tonumber(os.date "%H")
+    if hour >= 10 and hour <= 17 then
+      logo = require("utils/header").jollyroger
+    end
 
     logo = logo .. "\n"
 
@@ -30,7 +35,7 @@ return {
           local padding = 8  -- set horizontal padding for the box
 
           -- Construct the dynamic content
-          local content = os.date "%H:%M --- %Y-%m-%d" .. " --- " .. stats.loaded .. "/" .. stats.count
+          local content = os.date "%H:%M --- %d-%m-%Y" .. " --- " .. stats.loaded .. "/" .. stats.count
 
           -- Calculate the width based on the content length
           local width = string.len(content) + padding  -- Add padding for the box
