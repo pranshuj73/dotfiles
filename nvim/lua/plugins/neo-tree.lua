@@ -7,14 +7,14 @@ return {
     "MunifTanjim/nui.nvim",
     "3rd/image.nvim", -- IMAGE SUPPORT
   },
-  config = function ()
-    require("neo-tree").setup({
-      window = {
-        mappings = {
-          ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
-        }
+  opts = {
+    window = {
+      mappings = {
+        ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
       }
-    })
-    vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal right<CR>', {})
-  end
+    }
+  },
+  keys = {
+    {"<C-n>", "<cmd>Neotree filesystem reveal right<CR>" },
+  },
 }

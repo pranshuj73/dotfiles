@@ -1,12 +1,11 @@
 return {
   "zbirenbaum/copilot.lua",
+  event = "VeryLazy",
   lazy = true,
-  config = function ()
-    require("copilot").setup({
-      suggestion = {
-        enabled = true,
-        auto_trigger = true,
-      },
-    })
-  end
+  opts = {
+    suggestion = {
+      enabled = true,
+      auto_trigger = true,
+    },
+  }
 }
