@@ -1,12 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
   lazy = false,
+  priority = 999,
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-  },
-  opts = {
-    inlay_hints = { enabled = false }
   },
   config = function()
     require("mason").setup()
