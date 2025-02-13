@@ -4,6 +4,6 @@ return {
   priority = 1000,
   opts = {
     style = "night",
-    on_colors = require("colors.tokyomidnight")
-  }
+    on_colors = require("colors.tokyomidnight"),
+  },
 }

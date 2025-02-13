@@ -1,7 +1,5 @@
 return {
   "yetone/avante.nvim",
-  event = "VeryLazy",
-  lazy = true,
   version = false, -- set this if you want to always pull the latest change
   opts = {
     provider = "copilot",
@@ -45,11 +43,11 @@ return {
           end,
           desc = "clip: paste image",
         },
-      }
+      },
     },
     {
       -- Make sure to set this up properly if you have lazy=true
-      'MeanderingProgrammer/render-markdown.nvim',
+      "MeanderingProgrammer/render-markdown.nvim",
       opts = {
         file_types = { "markdown", "Avante" },
       },
