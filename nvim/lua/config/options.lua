@@ -9,6 +9,9 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set number")
 vim.cmd("set relativenumber")
 
+-- autoformatting
+vim.g.autoformat = false
+
 -- floating diagnostic
 vim.diagnostic.config({
   float = {

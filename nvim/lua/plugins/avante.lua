@@ -1,6 +1,7 @@
 return {
   "yetone/avante.nvim",
   version = false, -- set this if you want to always pull the latest change
+  event = "BufRead",
   opts = {
     provider = "copilot",
     auto_suggestions_provider = "copilot",

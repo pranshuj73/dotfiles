@@ -18,5 +18,9 @@ return {
       },
     },
     picker = { enabled = true, sources = { explorer = { layout = { layout = { position = "right" } } } } },
+    explorer = { enabled = false },
   },
+  keys = {
+    { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+  }
 }
