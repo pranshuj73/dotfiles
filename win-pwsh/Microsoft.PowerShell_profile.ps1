@@ -29,6 +29,10 @@ function rpth {
   cd ~/Desktop
 }
 
+function df {
+  cd ~/Desktop/github/dotfiles; nvim;
+}
+
 ### CUSTOM GIT SHORTCUTS
 function gac {
     param (
