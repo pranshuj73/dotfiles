@@ -5,19 +5,26 @@ local act = wezterm.action
 local mod = {}
 
 if platform.is_mac then
-   mod.SUPER = 'SUPER'
-   mod.SUPER_REV = 'SUPER|CTRL'
+  mod.SUPER = 'SUPER'
+  mod.SUPER_REV = 'SUPER|CTRL'
 elseif platform.is_win or platform.is_linux then
-   mod.SUPER = 'CTRL'
-   mod.SUPER_REV = 'CTRL|ALT'
+  mod.SUPER = 'CTRL'
+  mod.SUPER_REV = 'CTRL|ALT'
 end
 
 
 local keys = {
+  -- tabs --
+  -- move tabs --
+  { key = '-', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
+  { key = '=', mods = mod.SUPER_REV, action = act.MoveTabRelative(1)  },
+  -- navigate tabs --
+  { key = '[', mods = mod.SUPER_REV, action = act.ActivateTabRelative(-1) },
+  { key = ']', mods = mod.SUPER_REV, action = act.ActivateTabRelative(1)  },
   -- panes --
   -- panes: split panes
   { key = [[\]], mods = mod.SUPER,     action = act.SplitHorizontal{ domain = 'CurrentPaneDomain' } },
-  { key = [[\]], mods = mod.SUPER_REV, action = act.SplitVertical{ domain = 'CurrentPaneDomain' } },
+  { key = [[\]], mods = mod.SUPER_REV, action = act.SplitVertical{   domain = 'CurrentPaneDomain' } },
 
   -- panes: zoom+close pane
   { key = 'Enter', mods = mod.SUPER,     action = act.TogglePaneZoomState },
