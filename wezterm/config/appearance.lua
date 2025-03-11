@@ -4,6 +4,7 @@ return {
   -- colors
   -- colors = theme,
   color_scheme = 'Grayscale (dark) (terminal.sexy)',
+  -- color_scheme = "Catppuccin Mocha",
 
   -- window paddings set to 0 for neovim
   window_padding = {
