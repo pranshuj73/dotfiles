@@ -44,6 +44,7 @@ local keys = {
 
   -- launch menu
   { key = 'l', mods = mod.SUPER_REV, action = wezterm.action.ShowLauncherArgs { flags = 'LAUNCH_MENU_ITEMS' } },
+  { key = 'p', mods = mod.SUPER_REV, action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' } },
 }
 
 
