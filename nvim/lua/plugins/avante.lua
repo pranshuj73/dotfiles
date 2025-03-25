@@ -5,7 +5,7 @@ return {
   opts = {
     provider = "copilot",
     auto_suggestions_provider = "copilot",
-    -- behaviour = { auto_suggestions = true },
+    behaviour = { auto_suggestions = true },
     -- add any opts here
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

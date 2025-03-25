@@ -27,4 +27,6 @@ return {
   max_fps = 120,
 
   adjust_window_size_when_changing_font_size = false,
+
+  dpi = 256,
 }

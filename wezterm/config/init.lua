@@ -1,6 +1,6 @@
 local wezterm = require('wezterm')
+local platform = require('utils.platform')
 
--- set window size and center window on startup
 wezterm.on("gui-startup", function(cmd)
   local screen = wezterm.gui.screens().main
   local ratio = 0.6

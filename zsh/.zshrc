@@ -123,3 +123,13 @@ axs() {
 vencord() {
   sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 }
+
+# source XDG VARS
+source ~/.config/user-dirs.dirs
+
+# bun completions
+[ -s "/home/volty/.bun/_bun" ] && source "/home/volty/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -1,0 +1,54 @@
+# fonts
+font-family = FiraCode Nerd Font Mono Med
+font-size = 10.5
+# theme = zenwritten_dark
+
+# cursor
+cursor-style = block
+cursor-style-blink = false
+
+# splits
+keybind = ctrl+alt+|=new_split:right
+unfocused-split-opacity = 0.9
+
+# shell
+shell-integration = detect
+
+# gtk
+gtk-wide-tabs = false
+adw-toolbar-style = flat
+
+# tmux
+# command = tmux -s -A main
+# command = sh -c "if tmux has-session -t main 2>/dev/null; then if [ $(tmux list-clients -t main 2>/dev/null | wc -l) -gt 0 ]; then tmux new-session -t main -A -s main_$(date +%s) -d \\; new-window \\; attach; else tmux attach -t main; fi; else tmux new-session -s main; fi"
+
+# closing
+confirm-close-surface = false
+
+# copy - paste
+keybind = performable:ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+
+# colorscheme - terminal.sexy (grayscale - dark)
+palette = 0=#101010
+palette = 1=#7c7c7c
+palette = 2=#8e8e8e
+palette = 3=#a0a0a0
+palette = 4=#686868
+palette = 5=#747474
+palette = 6=#868686
+palette = 7=#b9b9b9
+palette = 8=#525252
+palette = 9=#7c7c7c
+palette = 10=#8e8e8e
+palette = 11=#a0a0a0
+palette = 12=#686868
+palette = 13=#747474
+palette = 14=#868686
+palette = 15=#f7f7f7
+background = #101010
+foreground = #b9b9b9
+cursor-color = #b9b9b9
+cursor-text = #101010
+selection-background = #686868
+selection-foreground = #f7f7f7
