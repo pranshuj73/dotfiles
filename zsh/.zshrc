@@ -133,3 +133,6 @@ source ~/.config/user-dirs.dirs
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# google
+export GOOGLE_APPLICATION_CREDENTIALS="/home/volty/.keys/clientlabs-edulogy.json"
