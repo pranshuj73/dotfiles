@@ -106,14 +106,25 @@ eval "$(pyenv init - zsh)"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # aliases & functions
 alias sl="cd ~"
+alias tree="git ls-tree -r --name-only HEAD | tree --fromfile"
 
 # edit dotfiles
 df() {
   cd ~/gh/dotfiles
   nvim
 }
+
+# edit zettelkasten
+zk() {
+  cd ~/zettelkasten
+  nvim
+}
+
 
 # ax shell update / install command
 axs() {
