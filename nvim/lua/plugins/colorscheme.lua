@@ -5,5 +5,6 @@ return {
   opts = {
     style = "night",
     on_colors = require("colors.tokyomidnight"),
+    transparent=true,
   },
 }
