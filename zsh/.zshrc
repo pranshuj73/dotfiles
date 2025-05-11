@@ -145,5 +145,5 @@ source ~/.config/user-dirs.dirs
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# google
-export GOOGLE_APPLICATION_CREDENTIALS="/home/volty/.keys/clientlabs-edulogy.json"
+# emacs
+export PATH="$HOME/.config/emacs/bin:$PATH"
