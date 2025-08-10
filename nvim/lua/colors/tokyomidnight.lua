@@ -1,5 +1,5 @@
 local function setColors(c)
-  c._name = "tokyonight_night" -- Theme name
+  c._name = "tokyomidnight" -- Theme name
   c._style = "night" -- Theme style
   c.bg = "#000000" -- True Black
   c.bg_dark = "#000000" -- True Black

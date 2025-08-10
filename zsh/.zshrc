@@ -45,12 +45,27 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+
+# Disable suggestion accept on right arrow — MUST be BEFORE plugin load
+bindkey '^[[C' forward-char
+bindkey '^[OC' forward-char  # For macOS / tmux variants
+
+# Load plugins after overriding keys
 plugins=(
-	git
-	zsh-autosuggestions
+  git
+  zsh-autosuggestions
 )
 
-bindkey '\t\t' autosuggest-accept
+# Prevent zsh-autosuggestions from hooking any keys
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=()
+
+# Optional: Accept entire suggestion with Tab
+bindkey '^I' autosuggest-accept
+bindkey '^[[Z' autosuggest-accept  # Shift + Tab
+
+# Delete word with ctrl + backspace
+bindkey '^H' backward-kill-word
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,7 +126,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # aliases & functions
 alias sl="cd ~"
-alias tree="git ls-tree -r --name-only HEAD | tree --fromfile"
+alias gtree="git ls-tree -r --name-only HEAD | tree --fromfile"
 
 # edit dotfiles
 df() {
@@ -147,3 +162,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # emacs
 export PATH="$HOME/.config/emacs/bin:$PATH"
+
+# wayland
+export GDK_BACKEND=wayland

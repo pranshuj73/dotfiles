@@ -1,0 +1,31 @@
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "left"
+    {music != "" ? " ${music}" : ""}))
+
+(defwidget cal_agenda []
+  (box :class "agenda" :orientation "vertical" :vexpand true
+    (button :onmiddleclick "bash -c '~/.scripts/agenda/refresh-eww-agenda.sh 2>> /tmp/eww-error.log >> /tmp/eww-output.log'"
+      (box :orientation "vertical" :valign "end"
+        (label :text "${cal_agenda}" :wrap true)))))
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{title}} — {{artist}}' || true")
+
+(defpoll cal_agenda :interval "30m"
+  "~/.scripts/agenda/cal.sh"
+)
+
+(defwindow currently-playing
+  :monitor 0
+  :stacking "bg"
+  :geometry (geometry :x "10px" :y "20px" :width "500px" :anchor "bottom left")
+  (music))
+
+(defwindow agenda
+  :monitor 0
+  :stacking "bg"
+  :geometry (geometry :x "10px" :y "20px" :width "500px" :height "1000px" :anchor "bottom right")
+  (cal_agenda))

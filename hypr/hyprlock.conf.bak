@@ -36,7 +36,7 @@ input-field {
     capslock_color = 0xff$secondary
     fade_on_empty = false
     font_family = Iosevka Nerd Font
-    placeholder_text = ... #text for input password
+    placeholder_text = #text for input password
     hide_input = false
     position = 0, -100
     halign = center
@@ -64,7 +64,7 @@ label {
 # USER
 label {
     monitor =
-    text = cmd[update:1000] echo "$USER@$(hostname)"
+    text = cmd[update:1000] echo "$USER@zerogoki"
     color = 0xff$foreground
     font_size = 14
     font_family = Iosevka Nerd Font Bold Italic
