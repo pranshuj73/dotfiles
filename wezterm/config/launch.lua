@@ -16,7 +16,7 @@ if platform.is_win then
   options.default_prog = { 'pwsh.exe', '-nologo' }
   options.default_cwd = "C:\\Users\\Pranshu\\Desktop"
   options.launch_menu = {
-    { label = "Arch WSL", args = { "arch.exe" } },
+    -- { label = "Arch WSL", args = { "arch.exe" } },
     {
       label = "PowerShell",
       args = { "pwsh.exe" , "-nologo"},

@@ -165,3 +165,15 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # wayland
 export GDK_BACKEND=wayland
+
+. "$HOME/.local/share/../bin/env"
+
+# Turso
+export PATH="$PATH:/home/volty/.turso"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# android
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
