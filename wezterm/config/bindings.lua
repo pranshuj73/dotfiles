@@ -48,6 +48,9 @@ local keys = {
   -- Disable Super + = & Super + -
 	{ key = "=", mods = "SUPER", action = wezterm.action.DisableDefaultAssignment },
 	{ key = "-", mods = "SUPER", action = wezterm.action.DisableDefaultAssignment },
+
+  -- Shift + Enter for new line
+  {key="Enter", mods="SHIFT", action=wezterm.action.SendString("\n")}
 }
 
 return {
