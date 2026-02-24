@@ -11,9 +11,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    bspwm
-    sxhkd
-    xterm
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -49,6 +46,48 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+  };
+
+  # neovim config
+  home.file.".config/nvim" = {
+    source = ../../../nvim;
+    recursive = true;
+  };
+
+  # bspwm
+  home.file.".config/bspwm" = {
+    source = ../../../bspwm;
+    recursive = true;
+  };
+
+  # picom
+  home.file.".config/picom" = {
+    source = ../../../picom;
+    recursive = true;
+  };
+
+  # polybar
+  home.file.".config/polybar" = {
+    source = ../../../polybar;
+    recursive = true;
+  };
+
+  # ranger
+  home.file.".config/ranger" = {
+    source = ../../../ranger;
+    recursive = true;
+  };
+
+  # rofi
+  home.file.".config/rofi" = {
+    source = ../../../rofi;
+    recursive = true;
+  };
+
+  # sxhkd
+  home.file.".config/sxhkd" = {
+    source = ../../../sxhkd;
+    recursive = true;
   };
 
   # Let Home Manager install and manage itself.

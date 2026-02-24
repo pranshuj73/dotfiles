@@ -15,7 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "zerogoki"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # flakes
@@ -53,10 +53,14 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Enable bspwm
+  services.xserver.windowManager.bspwm.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+    options = "ctrl:swapescape";
   };
 
   # Enable CUPS to print documents.
@@ -86,9 +90,7 @@
     isNormalUser = true;
     description = "prnsh";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages = with pkgs; [];
   };
 
   home-manager = {
@@ -111,8 +113,26 @@
     wget
     neovim
     git
-    home-manager
+    bspwm
+    sxhkd
+    polybar
+    picom
+    rofi
+    discord
+    mpv
+    wezterm
+    unzip 
   ];
+
+
+  nix = {
+    # Hard link identical files in the store automatically
+    autoOptimiseStore = true;
+    # automatically trigger garbage collection
+    gc.automatic = true;
+    gc.dates = "weekly";
+    gc.options = "--delete-older-than 15d";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
