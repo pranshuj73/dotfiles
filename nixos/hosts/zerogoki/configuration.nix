@@ -154,9 +154,11 @@
     gh
     git
     lazygit
+    ripgrep
     mpv
     brightnessctl
     playerctl
+    feh
 
     # terminal
     wezterm
@@ -219,8 +221,50 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  services.picom.enable = true;
+  services.picom = {
+    enable = true;
+    backend = "glx";
+    vSync = true;
 
+    settings = {
+      # Shadows
+      shadow = true;
+      shadow-radius = 10;
+      shadow-opacity = 0.8;
+      shadow-offset-x = -7;
+      shadow-offset-y = -7;
+
+      # Fading / animations
+      fading = true;
+      fade-in-step = 0.1;
+      fade-out-step = 0.1;
+      fade-delta = 8;
+      no-fading-openclose = false;
+
+      # Rounded corners
+      corner-radius = 12;
+      rounded-corners-exclude = [
+        "window_type = 'dock'"
+        "window_type = 'desktop'"
+      ];
+
+      # Opacity
+      inactive-opacity = 0.6;
+
+      # Blur (modern syntax)
+      blur = {
+        method = "dual_kawase";
+        strength = 7;
+      };
+
+      blur-background = true;
+      blur-background-frame = true;
+
+      # Optional: detect rounded corners correctly
+      detect-rounded-corners = true;
+      detect-client-opacity = true;
+    };
+  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
