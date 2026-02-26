@@ -68,16 +68,20 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-    options = "ctrl:swapescape";
+    options = "caps:swapescape";
   };
   services.libinput = {
     enable = true;
 
     touchpad = {
-      naturalScrolling = false;   # macOS-style scroll
+      naturalScrolling = true;
       tapping = true;            # tap to click
       middleEmulation = true;    # 3-finger middle click
       disableWhileTyping = false;
+    };
+
+    mouse = {
+      naturalScrolling = true;
     };
   };
   # Enable CUPS to print documents.
