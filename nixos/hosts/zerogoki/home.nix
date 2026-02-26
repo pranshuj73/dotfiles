@@ -49,46 +49,8 @@
   };
 
   # neovim config
-  home.file.".config/nvim" = {
-    source = ../../../nvim;
-    recursive = true;
-  };
-
-  # bspwm
-  home.file.".config/bspwm" = {
-    source = ../../../bspwm;
-    recursive = true;
-  };
-
-  # picom
-  home.file.".config/picom" = {
-    source = ../../../picom;
-    recursive = true;
-  };
-
-  # polybar
-  home.file.".config/polybar" = {
-    source = ../../../polybar;
-    recursive = true;
-  };
-
-  # ranger
-  home.file.".config/ranger" = {
-    source = ../../../ranger;
-    recursive = true;
-  };
-
-  # rofi
-  home.file.".config/rofi" = {
-    source = ../../../rofi;
-    recursive = true;
-  };
-
-  # sxhkd
-  home.file.".config/sxhkd" = {
-    source = ../../../sxhkd;
-    recursive = true;
-  };
+  home.file.".config/nvim" = { source = ../../../nvim; recursive = true; };
+  home.file.".config/wezterm" = { source = ../../../wezterm; recursive = true; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

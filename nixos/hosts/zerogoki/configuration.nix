@@ -20,6 +20,14 @@
 
   # flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    # Hard link identical files in the store automatically
+    settings.auto-optimise-store = true;
+    # automatically trigger garbage collection
+    gc.automatic = true;
+    gc.dates = "weekly";
+    gc.options = "--delete-older-than 15d";
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -50,8 +58,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Enable bspwm
   services.xserver.windowManager.bspwm.enable = true;
@@ -62,7 +70,16 @@
     variant = "";
     options = "ctrl:swapescape";
   };
+  services.libinput = {
+    enable = true;
 
+    touchpad = {
+      naturalScrolling = false;   # macOS-style scroll
+      tapping = true;            # tap to click
+      middleEmulation = true;    # 3-finger middle click
+      disableWhileTyping = false;
+    };
+  };
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -91,6 +108,7 @@
     description = "prnsh";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   home-manager = {
@@ -100,39 +118,89 @@
     };
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    neovim
-    git
+    # de / wm / comp
     bspwm
     sxhkd
     polybar
     picom
     rofi
+    clipmenu
+    xclip
+
+    # applications
     discord
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # spotify
+    # spicetify-cli
+
+    # editors
+    neovim
+    vim
+
+    # utilities
+    wget
+    unzip
+    zoxide
+    gh
+    git
+    lazygit
     mpv
+    brightnessctl
+    playerctl
+
+    # terminal
     wezterm
-    unzip 
+    zsh
+    oh-my-zsh
+    zsh-autosuggestions
+
+    # lang support
+    zig
+    go
+    nodejs
+    pnpm
+    bun
   ];
 
+  # Install firefox.
+  programs.firefox.enable = true;
+  programs.zsh = {
+    enable = true;
 
-  nix = {
-    # Hard link identical files in the store automatically
-    autoOptimiseStore = true;
-    # automatically trigger garbage collection
-    gc.automatic = true;
-    gc.dates = "weekly";
-    gc.options = "--delete-older-than 15d";
+    autosuggestions.enable = true;
+    ohMyZsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [
+        "git"
+        "docker"
+      ];
+    };
+
+    interactiveShellInit = ''
+      # Prevent zsh-autosuggestions from hooking any keys
+      ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=()
+
+      # Accept entire suggestion with Tab
+      bindkey '^I' autosuggest-accept
+      bindkey '^[[Z' autosuggest-accept
+
+      # Ctrl + Backspace
+      bindkey '^H' backward-kill-word
+    '';
   };
+
+  # fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+  ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -146,6 +214,7 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  services.picom.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
