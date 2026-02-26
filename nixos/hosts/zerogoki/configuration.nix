@@ -161,6 +161,7 @@
     zsh-autosuggestions
 
     # lang support
+    libgcc
     zig
     go
     nodejs
