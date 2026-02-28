@@ -1,7 +1,7 @@
 ### Apps, Launcher & Co.
 # Terminal emulator
 super + {Return,q}
-	wezterm
+  wezterm start --always-new-process
 
 # Program launcher (dmenu and rofi)
 super + {@space,d}
