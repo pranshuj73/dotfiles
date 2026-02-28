@@ -140,6 +140,9 @@
     # applications
     discord
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    claude-code
+    code-cursor
+    codex
     # spotify
     # spicetify-cli
 
@@ -159,6 +162,7 @@
     brightnessctl
     playerctl
     feh
+    killall
 
     # terminal
     wezterm
@@ -167,12 +171,14 @@
     zsh-autosuggestions
 
     # lang support
-    libgcc
     zig
     go
     nodejs
     pnpm
     bun
+    gcc
+    cargo
+    rustc
   ];
 
   # Install firefox.
@@ -201,6 +207,12 @@
       # Ctrl + Backspace
       bindkey '^H' backward-kill-word
     '';
+  };
+
+  # env vars
+  environment.sessionVariables = {
+    XCURSOR_THEME = "BreezeX-Light";
+    XCURSOR_SIZE = "24";
   };
 
   # fonts
@@ -238,7 +250,7 @@
       fading = true;
       fade-in-step = 0.1;
       fade-out-step = 0.1;
-      fade-delta = 8;
+      fade-delta = 5;
       no-fading-openclose = false;
 
       # Rounded corners
@@ -263,6 +275,39 @@
       # Optional: detect rounded corners correctly
       detect-rounded-corners = true;
       detect-client-opacity = true;
+
+      # Completely disable compositor effects for certain window types
+      wintypes = {
+        dock = {
+          shadow = false;
+          fade = false;
+          blur-background = false;
+        };
+
+        dropdown_menu = {
+          shadow = false;
+          fade = false;
+          blur-background = false;
+        };
+
+        popup_menu = {
+          shadow = false;
+          fade = false;
+          blur-background = false;
+        };
+
+        tooltip = {
+          shadow = false;
+          fade = false;
+          blur-background = false;
+        };
+
+        utility = {
+          shadow = false;
+          fade = false;
+          blur-background = false;
+        };
+      };
     };
   };
   # Open ports in the firewall.
