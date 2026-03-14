@@ -73,14 +73,11 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
-
-# focus the older or newer node in the focus history
-super + {o,i}
+super + Tab
 	bspc wm -h off; \
-	bspc node {older,newer} -f; \
+	bspc node older -f; \
 	bspc wm -h on
+
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
@@ -124,10 +121,10 @@ super + {Left,Down,Up,Right}
 
 # Screenshots
 Print
-    maim /mnt/fast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+    maim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 super + Print
-    maim -s /mnt/fast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+    maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 # Lock
 super + F1
