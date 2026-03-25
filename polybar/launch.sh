@@ -2,6 +2,11 @@
 
 DIR="$HOME/.config/polybar"
 
+# Prevent concurrent launches (e.g., during bspwm reload)
+LOCK_FILE="/tmp/polybar-launch.lock"
+exec 200>"$LOCK_FILE"
+flock -n 200 || exit 0
+
 # Ask running bars to quit cleanly (don't block if IPC is stuck)
 timeout 1s polybar-msg cmd quit >/dev/null 2>&1 || true
 
