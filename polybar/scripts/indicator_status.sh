@@ -75,4 +75,4 @@ else
   fi
 fi
 
-printf "%%{T2}%%{F%s}%%{F-}%%{T-}%%{B%s}  %%{B-}" "$color" "$color"
+printf "%%{T2}%%{F%s}%%{F-}%%{T-}%%{B%s}  %%{B-}" "$color" "$color"
