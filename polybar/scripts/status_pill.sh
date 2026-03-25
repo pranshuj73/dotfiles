@@ -29,7 +29,7 @@ volume_pct() {
 
 volume_muted() {
   if command -v wpctl >/dev/null 2>&1; then
-    wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q "\\[MUTED\\]"
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q "\[MUTED\]"
     return $?
   fi
   return 1
@@ -63,54 +63,83 @@ bt_state() {
   fi
 }
 
-bat=$(battery_pct)
-state=$(battery_state)
-vol=$(volume_pct)
-bt=$(bt_state)
-wifi=$(wifi_name)
+render() {
+  bat=$(battery_pct)
+  state=$(battery_state)
+  vol=$(volume_pct)
+  bt=$(bt_state)
+  wifi=$(wifi_name)
 
-bat_icon=""
-if [ "$bat" != "n/a" ]; then
-  if [ "$bat" -le 10 ]; then bat_icon=""
-  elif [ "$bat" -le 25 ]; then bat_icon=""
-  elif [ "$bat" -le 50 ]; then bat_icon=""
-  elif [ "$bat" -le 80 ]; then bat_icon=""
-  else bat_icon=""
+  bat_icon=""
+  if [ "$bat" != "n/a" ]; then
+    if [ "$bat" -le 10 ]; then bat_icon=""
+    elif [ "$bat" -le 25 ]; then bat_icon=""
+    elif [ "$bat" -le 50 ]; then bat_icon=""
+    elif [ "$bat" -le 80 ]; then bat_icon=""
+    else bat_icon=""
+    fi
   fi
-fi
 
-if [ "$state" = "Charging" ]; then
-  step=$(( $(date +%s) % 5 ))
-  case "$step" in
-    0) bat_icon="";;
-    1) bat_icon="";;
-    2) bat_icon="";;
-    3) bat_icon="";;
-    4) bat_icon="";;
+  if [ "$state" = "Charging" ]; then
+    step=$(( $(date +%s) % 5 ))
+    case "$step" in
+      0) bat_icon="";;
+      1) bat_icon="";;
+      2) bat_icon="";;
+      3) bat_icon="";;
+      4) bat_icon="";;
+    esac
+  fi
+
+  case "$state" in
+    Charging) bat_label="${bat_icon} ${bat}%+";;
+    Full) bat_label="${bat_icon} ${bat}%";;
+    Discharging) bat_label="${bat_icon} ${bat}%";;
+    *) bat_label="${bat_icon} ${bat}%";;
   esac
-fi
 
-case "$state" in
-  Charging) bat_label="${bat_icon} ${bat}%+";;
-  Full) bat_label="${bat_icon} ${bat}%";;
-  Discharging) bat_label="${bat_icon} ${bat}%";;
-  *) bat_label="${bat_icon} ${bat}%";;
-esac
-
-vol_icon=""
-if volume_muted; then
-  vol_icon=""
-else
-  if [ "$vol" -le 30 ]; then vol_icon=""
-  elif [ "$vol" -le 60 ]; then vol_icon=""
-  else vol_icon=""
+  vol_icon=""
+  if volume_muted; then
+    vol_icon=""
+  else
+    if [ "$vol" -le 30 ]; then vol_icon=""
+    elif [ "$vol" -le 60 ]; then vol_icon=""
+    else vol_icon=""
+    fi
   fi
+
+  vol_segment="${vol_icon} ${vol}%"
+  if volume_muted; then
+    vol_segment="%{F#80d0d0d0}${vol_segment}%{F-}"
+  fi
+
+  parts="$bat_label  ${vol_segment}"
+  if [ -n "$bt" ]; then
+    parts="$parts   ${bt}"
+  fi
+  parts="$parts   ${wifi}"
+
+  printf "%s\n" "$parts"
+}
+
+sub_pid=""
+if command -v pw-mon >/dev/null 2>&1; then
+  exec 3< <(pw-mon 2>/dev/null)
+  sub_pid=$!
 fi
 
-parts="$bat_label  ${vol_icon} ${vol}%"
-if [ -n "$bt" ]; then
-  parts="$parts   ${bt}"
-fi
-parts="$parts   ${wifi}"
+trap '[ -n "$sub_pid" ] && kill "$sub_pid" 2>/dev/null' INT TERM EXIT
 
-printf "%s" "$parts"
+last_tick=0
+render
+while :; do
+  if [ -n "$sub_pid" ] && read -r -t 0.2 -u 3 _line; then
+    render
+  fi
+  now=$(date +%s)
+  if [ $((now - last_tick)) -ge 1 ]; then
+    render
+    last_tick=$now
+  fi
+  sleep 0.1
+ done
