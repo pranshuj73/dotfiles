@@ -16,7 +16,7 @@ super + e
 
 # make sxhkd reload its configuration files:
 super + Caps_Lock
-	pkill -USR1 -x sxhkd && polybar-msg cmd restart
+	pkill -USR1 -x sxhkd && bspc wm -r
 
 # bspwm hotkeys
 
