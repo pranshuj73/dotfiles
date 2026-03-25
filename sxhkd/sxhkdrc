@@ -15,7 +15,7 @@ super + e
   nautilus
 
 # make sxhkd reload its configuration files:
-super + Escape
+super + Caps_Lock
 	pkill -USR1 -x sxhkd && bspc wm -r
 
 # bspwm hotkeys
