@@ -33,7 +33,7 @@ volume_pct() {
 flash_if_high_volume() {
   vol="$1"
   [ -n "$vol" ] || return 1
-  if [ "$vol" -ge 90 ]; then
+  if [ "$vol" -ge 75 ]; then
     now=$(date +%s)
     stamp_file="/tmp/polybar-vol-flash"
     last=""

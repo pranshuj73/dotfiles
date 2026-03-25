@@ -5,8 +5,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 pkill picom
 picom --experimental-backends &
 feh --bg-fill ~/Pictures/wallpapers/dreams.jpg
-~/.config/polybar/launch.sh 
-
+~/.config/polybar/launch.sh &
 # set default cursor state
 xsetroot -cursor_name left_ptr &
 

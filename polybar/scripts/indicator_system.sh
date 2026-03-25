@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-# Default gray (50% alpha)
-color="#802a2a2a"
+# Default greenish teal (50% alpha)
+color="#8042d6a8"
 
 cpu_usage() {
   awk -v prev_idle="$1" -v prev_total="$2" '
@@ -30,11 +30,13 @@ max=$cpu
 
 if [ "$max" -gt 50 ]; then
   if [ "$max" -ge 85 ]; then
-    color="#80ff2a2a"
+    color="#80ff3b30" # red
   elif [ "$max" -ge 70 ]; then
-    color="#80e05a5a"
+    color="#80f28c2a" # orange
+  elif [ "$max" -ge 60 ]; then
+    color="#80f2d94a" # yellow
   else
-    color="#80c97a7a"
+    color="#808ee36f" # green
   fi
 fi
 

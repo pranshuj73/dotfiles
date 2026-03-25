@@ -135,11 +135,11 @@ super + F1
 #
 # Volume up
 XF86AudioRaiseVolume
-    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+    wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 
 # Volume down
 XF86AudioLowerVolume
-    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-
 
 # Mute toggle
 XF86AudioMute
@@ -182,4 +182,3 @@ super + v
         -theme-str '* \{ font: 10px; \}' \
         -theme-str 'listview \{ spacing: 0; \}' \
         -theme-str 'window \{ width: 20em; \}'
-
