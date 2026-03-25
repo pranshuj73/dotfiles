@@ -3,7 +3,7 @@
 CACHE_FILE="/tmp/weather_cache"
 LOCK_FILE="/tmp/weather_cache.lock"
 UPDATE_INTERVAL=600
-WTTR_URL="wttr.in?format=%i|%t"
+WTTR_URL="wttr.in?format=%i|%C|%t"
 
 icon_for_code() {
   local code="$1"
@@ -34,12 +34,11 @@ icon_for_code() {
 
 output_from_cache() {
   local cached="$1"
-  local code temp icon
-  code="${cached%%|*}"
-  temp="${cached#*|}"
-  code=$(echo "$code" | tr -cd '0-9')
-  icon=$(icon_for_code "$code")
-  echo "${icon}  ${temp}"
+  local rest cond temp
+  rest="${cached#*|}"
+  cond="${rest%%|*}"
+  temp="${rest#*|}"
+  echo " ${cond} ${temp} "
 }
 
 # Always return something ASAP
