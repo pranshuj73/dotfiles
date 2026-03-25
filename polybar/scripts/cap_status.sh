@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-# Default gray (50% alpha)
 color="#802a2a2a"
 
 battery_pct() {
@@ -43,7 +42,6 @@ flash_if_high_volume() {
     if [ "$last" != "$now" ]; then
       echo "$now" > "$stamp_file"
     fi
-    # Flash for 2 seconds after detection
     if [ -n "$last" ] && [ $((now - last)) -le 2 ]; then
       return 0
     fi
@@ -75,4 +73,4 @@ else
   fi
 fi
 
-printf "%%{T2}%%{F%s}%%{F-}%%{T-}%%{B%s}  %%{B-}" "$color" "$color"
+printf "%%{F%s}%%{F-}" "$color"

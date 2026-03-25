@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-# Default greenish teal (50% alpha)
 color="#8042d6a8"
 
 cpu_usage() {
@@ -30,14 +29,14 @@ max=$cpu
 
 if [ "$max" -gt 50 ]; then
   if [ "$max" -ge 85 ]; then
-    color="#80ff3b30" # red
+    color="#80ff3b30"
   elif [ "$max" -ge 70 ]; then
-    color="#80f28c2a" # orange
+    color="#80f28c2a"
   elif [ "$max" -ge 60 ]; then
-    color="#80f2d94a" # yellow
+    color="#80f2d94a"
   else
-    color="#808ee36f" # green
+    color="#808ee36f"
   fi
 fi
 
-printf "%%{T2}%%{F%s}%%{F-}%%{T-}%%{B%s}  %%{B-}" "$color" "$color"
+printf "%%{F%s}%%{F-}" "$color"

@@ -32,31 +32,6 @@ get_code() {
   ) &
 }
 
-icon_for_code() {
-  code="$1"
-  hour=$(date +%H)
-  case "$code" in
-    113) icon="";;
-    116) icon="";;
-    119|122) icon="";;
-    143|248|260) icon="";;
-    176|293|296|299|302|305|308|353|356|359|263|266) icon="";;
-    179|182|317|320|362|365) icon="";;
-    185|281|284|311|314) icon="";;
-    200|386|389) icon="";;
-    227|230|323|326|329|332|335|338|368|371|392|395) icon="";;
-    350) icon="";;
-    *) icon="";;
-  esac
-  if [ "$hour" -lt 6 ] || [ "$hour" -ge 19 ]; then
-    case "$code" in
-      113) icon="";;
-      116) icon="";;
-    esac
-  fi
-  echo "$icon"
-}
-
 bg_for_code() {
   code="$1"
   hour=$(date +%H)
@@ -82,9 +57,34 @@ bg_for_code() {
   esac
 }
 
+icon_for_code() {
+  code="$1"
+  hour=$(date +%H)
+  case "$code" in
+    113) icon="";;
+    116) icon="";;
+    119|122) icon="";;
+    143|248|260) icon="";;
+    176|293|296|299|302|305|308|353|356|359|263|266) icon="";;
+    179|182|317|320|362|365) icon="";;
+    185|281|284|311|314) icon="";;
+    200|386|389) icon="";;
+    227|230|323|326|329|332|335|338|368|371|392|395) icon="";;
+    350) icon="";;
+    *) icon="";;
+  esac
+  if [ "$hour" -lt 6 ] || [ "$hour" -ge 19 ]; then
+    case "$code" in
+      113) icon="";;
+      116) icon="";;
+    esac
+  fi
+  echo "$icon"
+}
+
 code=$(get_code | tr -cd '0-9')
 [ -n "$code" ] || code=0
-icon=$(icon_for_code "$code")
 bg=$(bg_for_code "$code")
+icon=$(icon_for_code "$code")
 
-printf "%%{B%s} %s %%{B-}" "$bg" "$icon"
+printf "%%{T2}%%{F%s}%%{F-}%%{T-}%%{B%s}%s  %%{B-}" "$bg" "$bg" "$icon"
