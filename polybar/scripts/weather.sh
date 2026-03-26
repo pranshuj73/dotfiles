@@ -38,7 +38,7 @@ output_from_cache() {
   rest="${cached#*|}"
   cond="${rest%%|*}"
   temp="${rest#*|}"
-  echo " ${cond} ${temp} "
+  echo "  ${cond} ${temp}  "
 }
 
 # Always return something ASAP

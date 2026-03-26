@@ -28,4 +28,4 @@ else
   used=0
 fi
 
-printf "  %s%%   %s%%  󰋊 %s%% " "$cpu" "$mem" "$used"
+printf "   %s%%   %s%%  󰋊 %s%%  " "$cpu" "$mem" "$used"

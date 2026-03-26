@@ -37,7 +37,7 @@ bg_for_code() {
   hour=$(date +%H)
   # time-of-day base
   if [ "$hour" -ge 6 ] && [ "$hour" -lt 12 ]; then
-    base="#80f5d56a"  # morning yellow
+    base="#80f7e07a"  # morning yellow
   elif [ "$hour" -ge 12 ] && [ "$hour" -lt 18 ]; then
     base="#80f0a34a"  # afternoon orange
   else
@@ -50,7 +50,7 @@ bg_for_code() {
     176|293|296|299|302|305|308|353|356|359|263|266) echo "#805a8cff";; # rain blue
     179|182|317|320|362|365) echo "#8079a7ff";; # sleet blue
     185|281|284|311|314) echo "#805a7bd9";; # freezing rain
-    200|386|389) echo "#80f2d35b";;      # thunder yellow
+    200|386|389) echo "#80f7cf4a";;      # thunder yellow
     227|230|323|326|329|332|335|338|368|371|392|395) echo "#80b5d8ff";; # snow blue
     350) echo "#80a0b9d9";;             # ice pellets
     *) echo "$base";;

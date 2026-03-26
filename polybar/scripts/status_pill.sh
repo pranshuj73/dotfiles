@@ -113,11 +113,11 @@ render() {
     vol_segment="%{F#80d0d0d0}${vol_segment}%{F-}"
   fi
 
-  parts=" ${bat_label}  ${vol_segment}"
+  parts="  ${bat_label}  ${vol_segment}"
   if [ -n "$bt" ]; then
     parts="$parts   ${bt}"
   fi
-  parts="$parts   ${wifi} "
+  parts="$parts   ${wifi}  "
 
   printf "%s\n" "$parts"
 }
