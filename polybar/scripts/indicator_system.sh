@@ -34,7 +34,7 @@ if [ "$max" -gt 50 ]; then
   elif [ "$max" -ge 70 ]; then
     color="#80f28c2a" # orange
   elif [ "$max" -ge 60 ]; then
-    color="#80f2d94a" # yellow
+    color="#80f3b65c" # yellow-orange
   else
     color="#808ee36f" # green
   fi

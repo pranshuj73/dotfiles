@@ -38,13 +38,17 @@ output_from_cache() {
   rest="${cached#*|}"
   cond="${rest%%|*}"
   temp="${rest#*|}"
-  echo "  ${cond} ${temp}  "
+  if [ "$cond" = "UKWN" ] && [ "$temp" = "UKWN" ]; then
+    echo "  UKWN  "
+  else
+    echo "  ${cond} ${temp}  "
+  fi
 }
 
 # Always return something ASAP
 if [[ -f "$CACHE_FILE" ]]; then
   CACHE_CONTENT=$(cat "$CACHE_FILE")
-  if [[ "$CACHE_CONTENT" != *"|"* || "$CACHE_CONTENT" != *[0-9]* ]]; then
+  if [[ "$CACHE_CONTENT" != *"|"* ]]; then
     CACHE_CONTENT=""
   else
     output_from_cache "$CACHE_CONTENT"
@@ -58,7 +62,11 @@ if [[ -f "$CACHE_FILE" ]]; then
 
       {
         NEW_DATA=$(curl -s "$WTTR_URL")
-        [[ -n "$NEW_DATA" && "$NEW_DATA" == *"|"* ]] && echo "$NEW_DATA" > "$CACHE_FILE"
+        if [[ -n "$NEW_DATA" && "$NEW_DATA" == *"|"* ]]; then
+          echo "$NEW_DATA" > "$CACHE_FILE"
+        else
+          echo "UKWN|UKWN|UKWN" > "$CACHE_FILE"
+        fi
       } &
     )
   fi
@@ -68,11 +76,15 @@ else
   if [[ -n "$NEW_DATA" && "$NEW_DATA" == *"|"* ]]; then
     output_from_cache "$NEW_DATA"
   else
-    output_from_cache "Unknown|"
+    output_from_cache "UKWN|UKWN|UKWN"
   fi
   (
     exec 200>"$LOCK_FILE"
     flock -n 200 || exit 0
-    [[ -n "$NEW_DATA" && "$NEW_DATA" == *"|"* ]] && echo "$NEW_DATA" > "$CACHE_FILE"
+    if [[ -n "$NEW_DATA" && "$NEW_DATA" == *"|"* ]]; then
+      echo "$NEW_DATA" > "$CACHE_FILE"
+    else
+      echo "UKWN|UKWN|UKWN" > "$CACHE_FILE"
+    fi
   ) &
 fi

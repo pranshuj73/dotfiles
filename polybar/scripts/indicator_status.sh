@@ -68,7 +68,7 @@ else
       case "$state" in
         Full) color="#807ad97a";;
         Charging) color="#807ad97a";;
-        Discharging) color="#80d9b24a";;
+        Discharging) color="#80f3b65c";;
         *) color="#802a2a2a";;
       esac
     fi
