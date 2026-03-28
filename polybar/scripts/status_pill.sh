@@ -44,7 +44,24 @@ wifi_name() {
     ssid=$(nmcli -t -f active,ssid dev wifi 2>/dev/null | awk -F: '$1=="yes" {print $2; exit}')
     [ -n "$ssid" ] && echo "$ssid" && return
   fi
-  echo "off"
+  echo "Offline"
+}
+
+wifi_strength() {
+  if [ -r /proc/net/wireless ]; then
+    iface=$(awk 'NR==3 {gsub(":", "", $1); print $1}' /proc/net/wireless)
+    if [ -n "$iface" ]; then
+      link=$(awk 'NR==3 {print $3}' /proc/net/wireless | tr -d '.')
+      # link is typically 0-70
+      if [ "$link" -le 0 ]; then echo 0; return; fi
+      if [ "$link" -le 17 ]; then echo 1; return; fi
+      if [ "$link" -le 35 ]; then echo 2; return; fi
+      if [ "$link" -le 52 ]; then echo 3; return; fi
+      echo 4
+      return
+    fi
+  fi
+  echo 0
 }
 
 bt_state() {
@@ -113,11 +130,22 @@ render() {
     vol_segment="%{F#80d0d0d0}${vol_segment}%{F-}"
   fi
 
+  wifi=$(wifi_name)
+  strength=$(wifi_strength)
+  case "$strength" in
+    4) wifi_icon="󰤨";;
+    3) wifi_icon="󰤥";;
+    2) wifi_icon="󰤢";;
+    1) wifi_icon="󰤟";;
+    *) wifi_icon="󰤭";;
+  esac
+  [ "$wifi" = "off" ] && wifi_icon="󰤭"
+
   parts="  ${bat_label}  ${vol_segment}"
   if [ -n "$bt" ]; then
     parts="$parts   ${bt}"
   fi
-  parts="$parts   ${wifi}  "
+  parts="$parts  ${wifi_icon} ${wifi}  "
 
   printf "%s\n" "$parts"
 }
