@@ -29,4 +29,9 @@ return {
   adjust_window_size_when_changing_font_size = false,
 
   dpi = 256,
+
+  inactive_pane_hsb = {
+    saturation = 0.5,
+    brightness = 0.2,
+  }
 }
