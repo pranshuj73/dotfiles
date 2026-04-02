@@ -65,7 +65,7 @@ marquee() {
 
 render() {
   player="$(player_args)" || {
-    printf '  No media  \n'
+    printf '\n'
     return
   }
 
@@ -79,7 +79,7 @@ render() {
   title="$(get_field title "$@")"
 
   if [ -z "$title" ]; then
-    printf '  No media  \n'
+    printf '\n'
     return
   fi
 
