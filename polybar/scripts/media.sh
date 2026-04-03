@@ -23,17 +23,15 @@ get_status() {
 }
 
 char_len() {
-  perl -CS -Mutf8 -e 'use Encode qw(decode); my $s = decode("UTF-8", join("", <>)); print length($s);' <<EOF
+  perl -CS -Mutf8 -e 'my $s = join("", <>); print length($s);' <<EOF
 $1
 EOF
 }
 
 truncate_text() {
   perl -CS -Mutf8 -e '
-    use Encode qw(decode encode);
     my ($width, $text) = @ARGV;
-    my $decoded = decode("UTF-8", $text);
-    print encode("UTF-8", substr($decoded, 0, $width));
+    print substr($text, 0, $width);
   ' "$1" "$2"
 }
 
@@ -53,13 +51,11 @@ marquee() {
   fi
 
   perl -CS -Mutf8 -e '
-    use Encode qw(decode encode);
     my ($text, $offset, $width) = @ARGV;
-    my $decoded = decode("UTF-8", $text);
-    my $padded = $decoded . q{   } . $decoded;
-    my $len = length($decoded);
+    my $padded = $text . q{   } . $text;
+    my $len = length($text);
     my $start = $offset % ($len + 3);
-    print encode("UTF-8", substr($padded, $start, $width));
+    print substr($padded, $start, $width);
   ' "$text" "$offset" "$TITLE_WIDTH"
 }
 
