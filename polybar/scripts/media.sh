@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
 TITLE_WIDTH=15
 SLEEP_INTERVAL=0.1
 
@@ -20,6 +23,27 @@ get_field() {
 
 get_status() {
   playerctl "$@" status 2>/dev/null | head -n1
+}
+
+sanitize_text() {
+  perl -CS -Mutf8 -pe "
+    s/\x{2019}/'/g;
+    s/\x{2018}/'/g;
+    s/\x{201C}/\"/g;
+    s/\x{201D}/\"/g;
+    s/\x{2013}/-/g;
+    s/\x{2014}/--/g;
+    s/\x{2026}/.../g;
+    s/â€™/'/g;
+    s/â€˜/'/g;
+    s/â€œ/\"/g;
+    s/â€\x9d/\"/g;
+    s/â€“/-/g;
+    s/â€”/--/g;
+    s/â€¦/.../g;
+  " <<EOF
+$1
+EOF
 }
 
 char_len() {
@@ -73,6 +97,7 @@ render() {
 
   status="$(get_status "$@")"
   title="$(get_field title "$@")"
+  title="$(sanitize_text "$title")"
 
   if [ -z "$title" ]; then
     printf '\n'
@@ -112,6 +137,7 @@ while :; do
 
   status="$(get_status "$@")"
   title="$(get_field title "$@")"
+  title="$(sanitize_text "$title")"
 
   if [ "$status" = "Playing" ] && [ -n "$title" ] && [ "$(char_len "$title")" -gt "$TITLE_WIDTH" ]; then
     offset=$((offset + 1))
