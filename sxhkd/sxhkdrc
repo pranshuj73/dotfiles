@@ -14,9 +14,13 @@ super + w
 super + e
   nautilus
 
-# make sxhkd reload its configuration files:
+# reload sxhkd without restarting bspwm
 super + Caps_Lock
-	pkill -USR1 -x sxhkd && bspc wm -r
+	pkill -USR1 -x sxhkd
+
+# restart bspwm explicitly when needed
+super + alt + Caps_Lock
+	bspc wm -r
 
 # bspwm hotkeys
 
