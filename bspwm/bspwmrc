@@ -2,8 +2,6 @@
 
 #autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
-pkill picom
-picom &
 feh --bg-fill ~/Pictures/wallpapers/dreams.jpg
 ~/.config/polybar/launch.sh &
 # set default cursor state
@@ -29,4 +27,3 @@ bspc config presel_feedback_color "#3a3a3a"
 
 #rules
 bspc rule -a mumble state=floating follow=on focus=on
-
