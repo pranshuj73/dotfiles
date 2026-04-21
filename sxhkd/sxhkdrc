@@ -15,11 +15,11 @@ super + e
   nautilus
 
 # reload sxhkd without restarting bspwm
-super + Caps_Lock
-	pkill -USR1 -x sxhkd
+super + Escape
+	kill -USR1 $(pgrep -x sxhkd)
 
 # restart bspwm explicitly when needed
-super + alt + Caps_Lock
+super + alt + Escape
 	bspc wm -r
 
 # bspwm hotkeys
@@ -52,9 +52,9 @@ super + g
 # state/flags
 #
 
-# hypr-style window states
+# toggle monocle (full-width) / tiled layout
 super + t
-	sh /home/prnsh/dotfiles/sxhkd/bspwm-toggle-float.sh
+	bspc desktop -l next
 
 super + u
 	bspc node -t ~pseudo_tiled
