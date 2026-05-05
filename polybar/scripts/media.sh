@@ -52,11 +52,21 @@ $1
 EOF
 }
 
-truncate_text() {
+pad_text() {
+  text="$1"
+
   perl -CS -Mutf8 -e '
-    my ($width, $text) = @ARGV;
-    print substr($text, 0, $width);
-  ' "$1" "$2"
+    my ($text, $width) = @ARGV;
+    my $len = length($text // q{});
+
+    if ($len == 0) {
+      print " " x $width;
+    } elsif ($len <= $width) {
+      print $text . (" " x ($width - $len));
+    } else {
+      print substr($text . q{   }, 0, $width);
+    }
+  ' "$text" "$TITLE_WIDTH"
 }
 
 marquee() {
@@ -108,7 +118,7 @@ render() {
     title_text="$(marquee "$title" "$offset")"
     title_fmt='%{F#d0d0d0}'
   else
-    title_text="$(truncate_text "$TITLE_WIDTH" "$title")"
+    title_text="$(pad_text "$title")"
     title_fmt='%{F#88d0d0d0}'
   fi
 
