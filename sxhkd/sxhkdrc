@@ -9,7 +9,7 @@ super + {@space,d}
 
 # Applications
 super + w
-  zen
+  zen-browser
 
 super + e
   nautilus
