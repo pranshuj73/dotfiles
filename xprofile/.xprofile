@@ -1,0 +1,29 @@
+#!/bin/sh
+# Sourced by display managers / startx before the WM starts.
+
+# session type — GDM mislabels bspwm session as wayland; force x11
+# so Chromium-based apps (helium, etc.) pick the right ozone backend
+export XDG_SESSION_TYPE=x11
+
+# keyboard
+setxkbmap -option caps:swapescape
+
+# editor
+export EDITOR=nvim
+
+# cursor
+export XCURSOR_THEME=BreezeX-Light
+export XCURSOR_SIZE=24
+
+# gtk
+export GTK_THEME=Adwaita:dark
+
+# android sdk (uncomment + adjust path once SDK is installed)
+# export ANDROID_HOME="$HOME/Android/Sdk"
+# export ANDROID_SDK_ROOT="$ANDROID_HOME"
+# export ANDROID_NDK_HOME="$ANDROID_HOME/ndk-bundle"
+# export ANDROID_NDK_ROOT="$ANDROID_NDK_HOME"
+# export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+# path additions
+export PATH="$HOME/go/bin:$HOME/.bun/bin:$PATH"

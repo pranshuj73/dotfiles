@@ -57,17 +57,15 @@ plugins=(
   zsh-autosuggestions
 )
 
-# Prevent zsh-autosuggestions from hooking any keys
+# Prevent zsh-autosuggestions from hooking any keys (must be BEFORE plugin load)
 ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=()
 
-# Optional: Accept entire suggestion with Tab
-bindkey '^I' autosuggest-accept
-bindkey '^[[Z' autosuggest-accept  # Shift + Tab
-
-# Delete word with ctrl + backspace
-bindkey '^H' backward-kill-word
-
 source $ZSH/oh-my-zsh.sh
+
+# Bindings — set AFTER source so plugin widgets exist
+bindkey '^I' autosuggest-accept       # Tab
+bindkey '^[[Z' autosuggest-accept     # Shift + Tab
+bindkey '^H' backward-kill-word       # Ctrl + Backspace
 
 # User configuration
 
@@ -140,12 +138,6 @@ zk() {
   nvim
 }
 
-
-# ax shell update / install command
-axs() {
-  curl -fsSL https://raw.githubusercontent.com/Axenide/Ax-Shell/main/install.sh | bash
-}
-
 vencord() {
   sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 }
@@ -163,17 +155,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # emacs
 export PATH="$HOME/.config/emacs/bin:$PATH"
 
-# wayland
-export GDK_BACKEND=wayland
-
-. "$HOME/.local/share/../bin/env"
-
-# Turso
-export PATH="$PATH:/home/volty/.turso"
-
 # zoxide
 eval "$(zoxide init zsh)"
-
-# android
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH

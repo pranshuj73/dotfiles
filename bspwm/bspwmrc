@@ -3,10 +3,11 @@
 #autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x copyq > /dev/null || copyq &
+pgrep -x picom > /dev/null || picom &
 feh --bg-fill ~/Pictures/wallpapers/dreams.jpg
 ~/.config/polybar/launch.sh &
-# set default cursor state
-xsetroot -cursor_name left_ptr &
+# set default cursor state (use Xcursor theme, not bitmap font)
+xsetroot -xcf "$HOME/.icons/$XCURSOR_THEME/cursors/left_ptr" "${XCURSOR_SIZE:-24}" &
 
 #monitor
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10

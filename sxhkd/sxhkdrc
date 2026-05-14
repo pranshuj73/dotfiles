@@ -15,7 +15,7 @@ super + e
   nautilus
 
 # reload sxhkd without restarting bspwm
-super + Escape
+super + shift + Escape
 	kill -USR1 $(pgrep -x sxhkd)
 
 # restart bspwm explicitly when needed
@@ -57,7 +57,7 @@ super + t
 	bspc desktop -l next
 
 super + u
-	bspc node -t ~pseudo_tiled
+	bspc node -t '~pseudo_tiled'
 
 super + shift + t
 	bspc node -t tiled
@@ -66,7 +66,7 @@ super + s
 	bspc node -t floating
 
 super + f
-	bspc node -t ~fullscreen
+	bspc node -t '~fullscreen'
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -167,7 +167,7 @@ super + shift + s
 
 # Lock
 super + F1
-    i3lock-fancy-rapid 5 3
+    betterlockscreen -l dim
 
 #
 # Volume / Brightness / Menus
