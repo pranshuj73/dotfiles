@@ -1,0 +1,95 @@
+* {
+    bg:         rgba(10, 10, 10, 0.35);
+    bg-alt:     #3c3f4f;
+    bg-input:   rgba(255, 255, 255, 0.05);
+    fg:         #f8f8f2;
+    fg-dim:     #666666;
+    border-col: #999999;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    background-color: @bg;
+    border:           2px solid;
+    border-color:     @border-col;
+    border-radius:    12px;
+    width:            680px;
+    padding:          10px;
+    font:             "FiraCode Nerd Font 11";
+}
+
+mainbox {
+    background-color: transparent;
+    children:         [inputbar, listview];
+    spacing:          8px;
+}
+
+inputbar {
+    background-color: @bg-input;
+    border-radius:    8px;
+    padding:          6px 10px;
+    children:         [prompt, entry];
+    spacing:          0;
+}
+
+prompt {
+    text-color:       @fg-dim;
+    padding:          0 6px 0 0;
+    vertical-align:   0.5;
+}
+
+entry {
+    text-color:         @fg;
+    placeholder:        "Search apps…";
+    placeholder-color:  @fg-dim;
+    vertical-align:     0.5;
+}
+
+listview {
+    background-color: transparent;
+    lines:            8;
+    columns:          1;
+    spacing:          4px;
+    scrollbar:        false;
+    cycle:            true;
+}
+
+element {
+    background-color: transparent;
+    border-radius:    6px;
+    padding:          8px 12px;
+    spacing:          10px;
+    orientation:      horizontal;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+}
+
+element selected.normal {
+    background-color: @bg-alt;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    text-color: #ea142e;
+}
+
+element selected.urgent {
+    background-color: @bg-alt;
+    text-color:       #ea142e;
+}
+
+element-icon {
+    size:           18px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color:     @fg;
+    vertical-align: 0.5;
+    highlight:      bold #967b9c;
+}
