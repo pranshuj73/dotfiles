@@ -123,8 +123,9 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # aliases & functions
-alias sl="cd ~"
 alias gtree="git ls-tree -r --name-only HEAD | tree --fromfile"
+alias lg="lazygit"
+alias ld="lazydocker"
 
 # edit dotfiles
 df() {
