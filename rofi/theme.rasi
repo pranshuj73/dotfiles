@@ -1,7 +1,7 @@
 * {
     bg:         rgba(10, 10, 10, 0.35);
     bg-alt:     #3c3f4f;
-    bg-input:   rgba(255, 255, 255, 0.05);
+    bg-input:   rgba(10, 10, 10, 0.80);
     fg:         #f8f8f2;
     fg-dim:     #666666;
     border-col: #999999;
