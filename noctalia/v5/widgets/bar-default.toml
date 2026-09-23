@@ -8,7 +8,7 @@ format = "{:%H:%M:%S} {:%d-%m-%Y}"
 glyph = "bolt-filled"
 
 [widget.cpu]
-show_label = false
+show_value = false
 
 [widget.media]
 hide_when_no_media = true
@@ -21,19 +21,19 @@ enabled = false
 enabled = false
 
 [widget.ram]
-show_label = false
+show_value = false
 
 [widget.sysmon]
-show_label = false
-stat = "disk_pct"
+show_value = false
+stat = "disk_used_pct"
 
 [widget.temp]
-show_label = false
+show_value = false
 
 [widget.workspaces]
 active_pill_size = 2.5
-display = "none"
 scale = 0.75
+show_labels = false
 
 [[control_center.shortcuts]]
 type = "wifi"
