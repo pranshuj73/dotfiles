@@ -137,3 +137,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # zoxide
 eval "$(zoxide init zsh)"
+export PATH=$HOME/.local/bin:$PATH
+
+eval "fastfetch"

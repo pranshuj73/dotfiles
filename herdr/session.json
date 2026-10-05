@@ -1,0 +1,62 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w4",
+      "custom_name": null,
+      "identity_cwd": "/home/prnsh/gh/yaksha",
+      "public_pane_numbers": {
+        "2": 5,
+        "1": 1
+      },
+      "next_public_pane_number": 6,
+      "public_tab_numbers": [
+        1,
+        4
+      ],
+      "next_public_tab_number": 5,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/home/prnsh/gh/yaksha"
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        },
+        {
+          "custom_name": "llm",
+          "layout": {
+            "Pane": 2
+          },
+          "panes": {
+            "2": {
+              "cwd": "/home/prnsh/gh/yaksha",
+              "agent_session": {
+                "source": "herdr:omp",
+                "agent": "omp",
+                "kind": "path",
+                "value": "/home/prnsh/.omp/agent/sessions/-gh-yaksha/2026-09-29T17-57-17-194Z_01a0ee50-550a-76a4-a224-c5cd297cfef3.jsonl"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 2,
+          "root_pane": 2
+        }
+      ],
+      "active_tab": 1
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}
