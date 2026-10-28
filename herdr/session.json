@@ -2,19 +2,23 @@
   "version": 3,
   "workspaces": [
     {
-      "id": "w4",
+      "id": "w7",
       "custom_name": null,
-      "identity_cwd": "/home/prnsh/gh/yaksha",
+      "identity_cwd": "/home/prnsh/gh/proteus",
       "public_pane_numbers": {
-        "2": 5,
-        "1": 1
+        "2": 6,
+        "1": 1,
+        "3": 8,
+        "4": 9
       },
-      "next_public_pane_number": 6,
+      "next_public_pane_number": 10,
       "public_tab_numbers": [
         1,
-        4
+        6,
+        8,
+        9
       ],
-      "next_public_tab_number": 5,
+      "next_public_tab_number": 10,
       "tabs": [
         {
           "custom_name": null,
@@ -23,7 +27,7 @@
           },
           "panes": {
             "1": {
-              "cwd": "/home/prnsh/gh/yaksha"
+              "cwd": "/home/prnsh/gh/proteus"
             }
           },
           "zoomed": false,
@@ -31,27 +35,61 @@
           "root_pane": 1
         },
         {
-          "custom_name": "llm",
+          "custom_name": null,
           "layout": {
             "Pane": 2
           },
           "panes": {
             "2": {
-              "cwd": "/home/prnsh/gh/yaksha",
+              "cwd": "/home/prnsh/gh/proteus",
               "agent_session": {
                 "source": "herdr:omp",
                 "agent": "omp",
                 "kind": "path",
-                "value": "/home/prnsh/.omp/agent/sessions/-gh-yaksha/2026-09-29T17-57-17-194Z_01a0ee50-550a-76a4-a224-c5cd297cfef3.jsonl"
+                "value": "/home/prnsh/.omp/agent/sessions/-gh-proteus/2026-10-25T07-50-46-018Z_01a1720a-6402-7315-945f-039a9fa23137.jsonl"
               }
             }
           },
           "zoomed": false,
           "focused": 2,
           "root_pane": 2
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 3
+          },
+          "panes": {
+            "3": {
+              "cwd": "/home/prnsh/gh/proteus",
+              "agent_session": {
+                "source": "herdr:opencode",
+                "agent": "opencode",
+                "kind": "id",
+                "value": "ses_e82883446ffeYidFr43q63K3aQ"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 3,
+          "root_pane": 3
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 4
+          },
+          "panes": {
+            "4": {
+              "cwd": "/home/prnsh/gh/dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 4,
+          "root_pane": 4
         }
       ],
-      "active_tab": 1
+      "active_tab": 3
     }
   ],
   "active": 0,

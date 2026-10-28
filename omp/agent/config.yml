@@ -24,6 +24,7 @@ power:
   sleepPrevention: idle
 compaction:
   handoffSaveToDisk: false
+  thresholdTokens: 256000
 edit:
   mode: hashline
 readLineNumbers: true
@@ -43,10 +44,9 @@ modelRoles:
   plan: openai-codex/gpt-5.6-sol:xhigh
   designer: openai-codex/gpt-5.6-sol:xhigh
   commit: openai-codex/gpt-5.6-luna:low
-  task: anthropic/claude-opus-4-8:high
   advisor: openai-codex/gpt-5.6-sol:xhigh
   tiny: anthropic/claude-opus-4-8:low
-  default: zai/glm-5.3:low
+  task: zai/glm-5.3-flash:auto
 advisor:
   enabled: true
 contextPromotion:
