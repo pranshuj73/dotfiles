@@ -1,0 +1,75 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w7",
+      "custom_name": null,
+      "identity_cwd": "/home/prnsh/gh/proteus",
+      "public_pane_numbers": {
+        "1": 13,
+        "2": 17,
+        "3": 16
+      },
+      "next_public_pane_number": 18,
+      "public_tab_numbers": [
+        13,
+        14
+      ],
+      "next_public_tab_number": 15,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 1
+              },
+              "second": {
+                "Pane": 2
+              }
+            }
+          },
+          "panes": {
+            "2": {
+              "cwd": "/home/prnsh/gh/proteus"
+            },
+            "1": {
+              "cwd": "/home/prnsh/gh/proteus",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "9fd888af-2029-4776-bb12-1ed69268e2ec"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 3
+          },
+          "panes": {
+            "3": {
+              "cwd": "/home/prnsh/gh/proteus"
+            }
+          },
+          "zoomed": false,
+          "focused": 3,
+          "root_pane": 3
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

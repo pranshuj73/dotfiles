@@ -19,6 +19,9 @@ thickness = 28
 [battery]
 warning_threshold = 15
 
+[control_center.calendar]
+show_events_card = false
+
 [[control_center.shortcuts]]
 type = "wifi"
 
@@ -334,6 +337,9 @@ palette_source = "wallpaper"
 path = "/home/prnsh/Pictures/Wallpapers/gengar.jpg"
 theme_mode = "dark"
 wallpaper_scheme = "m3-monochrome"
+
+[widget.bluetooth]
+show_label = true
 
 [widget.clock]
 capsule = true
