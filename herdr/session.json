@@ -2,47 +2,29 @@
   "version": 3,
   "workspaces": [
     {
-      "id": "w7",
+      "id": "w8",
       "custom_name": null,
-      "identity_cwd": "/home/prnsh/gh/proteus",
+      "identity_cwd": "/home/prnsh/gh/kairen",
       "public_pane_numbers": {
-        "3": 16,
-        "1": 13,
-        "2": 17
+        "1": 1,
+        "3": 6,
+        "2": 2
       },
-      "next_public_pane_number": 18,
+      "next_public_pane_number": 8,
       "public_tab_numbers": [
-        13,
-        14
+        1,
+        2
       ],
-      "next_public_tab_number": 15,
+      "next_public_tab_number": 6,
       "tabs": [
         {
           "custom_name": null,
           "layout": {
-            "Split": {
-              "direction": "Horizontal",
-              "ratio": 0.5,
-              "first": {
-                "Pane": 1
-              },
-              "second": {
-                "Pane": 2
-              }
-            }
+            "Pane": 1
           },
           "panes": {
             "1": {
-              "cwd": "/home/prnsh/gh/proteus",
-              "agent_session": {
-                "source": "herdr:claude",
-                "agent": "claude",
-                "kind": "id",
-                "value": "9fd888af-2029-4776-bb12-1ed69268e2ec"
-              }
-            },
-            "2": {
-              "cwd": "/home/prnsh/gh/proteus"
+              "cwd": "/home/prnsh/gh/kairen"
             }
           },
           "zoomed": false,
@@ -52,19 +34,89 @@
         {
           "custom_name": null,
           "layout": {
-            "Pane": 3
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 2
+              },
+              "second": {
+                "Pane": 3
+              }
+            }
           },
           "panes": {
+            "2": {
+              "cwd": "/home/prnsh/gh/kairen",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "cf9bccf8-baa6-4fbf-a5c9-83255209e261"
+              }
+            },
             "3": {
-              "cwd": "/home/prnsh/gh/proteus"
+              "cwd": "/home/prnsh/gh/kairen"
             }
           },
           "zoomed": false,
-          "focused": 3,
-          "root_pane": 3
+          "focused": 2,
+          "root_pane": 2
         }
       ],
-      "active_tab": 0
+      "active_tab": 1
+    },
+    {
+      "id": "w9",
+      "custom_name": null,
+      "identity_cwd": "/home/prnsh/gh/vaani",
+      "public_pane_numbers": {
+        "5": 2,
+        "4": 1
+      },
+      "next_public_pane_number": 3,
+      "public_tab_numbers": [
+        1,
+        2
+      ],
+      "next_public_tab_number": 3,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 4
+          },
+          "panes": {
+            "4": {
+              "cwd": "/home/prnsh/gh/vaani",
+              "agent_session": {
+                "source": "herdr:claude",
+                "agent": "claude",
+                "kind": "id",
+                "value": "68f64b21-76c7-4258-b387-50b3cccafbb1"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 4,
+          "root_pane": 4
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 5
+          },
+          "panes": {
+            "5": {
+              "cwd": "/home/prnsh/gh/vaani"
+            }
+          },
+          "zoomed": false,
+          "focused": 5,
+          "root_pane": 5
+        }
+      ],
+      "active_tab": 1
     }
   ],
   "active": 0,
